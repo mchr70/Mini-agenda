@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+        {% if events is empty %}
+            <p>Vous n'avez aucun événement pour l'instant.</p>
+        {% else %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">&#201;V&#201;NEMENT</th>
+                        <th scope="col">LIEU</th>
+                        <th scope="col">DATE ET HEURE</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td>{{ event.description }}</td>
+                        <td>{{ event.location }}</td>
+                        <td>{{ event.date|date('d/m/Y à H:i') }}</td>
+                        <td><a class="btn btn-primary" href="{{ path('edit', {'id' : event.id}) }}" role="button"><i class="far fa-edit"></i></a></td>
+                        <td><a class="btn btn-danger" href="{{ path('delete', {'id' : event.id}) }}" role="button"><i class="far fa-trash-alt"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            
+        {% endif %}
+{% endblock %}

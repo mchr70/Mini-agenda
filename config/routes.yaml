@@ -1,0 +1,15 @@
+index:
+   path: /
+   controller: App\Controller\HomeController::index
+
+delete:
+   path: /delete/{id}
+   controller: App\Controller\HomeController::delete
+
+add:
+   path: /add
+   controller: App\Controller\HomeController::add
+
+edit:
+   path: /edit/{id}
+   controller: App\Controller\HomeController::edit
